@@ -179,7 +179,7 @@
                     "display_field": [
                         "code"
                     ],
-                    "join_table_name": "ipay_payments"
+                    "join_table_name": "payments_payments"
                 },
                 "save": {
                     "index": ""
