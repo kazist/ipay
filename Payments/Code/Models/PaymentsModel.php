@@ -12,7 +12,7 @@ defined('KAZIST') or exit('Not Kazist Framework');
 
 use Kazist\Model\BaseModel;
 use Kazist\KazistFactory;
-use Payments\Payments\Code\Models\PaymentsModel;
+use Payments\Payments\Code\Models\PaymentsModel AS BasePaymentsModel;
 use Kazist\Service\Email\Email;
 
 /**
@@ -20,7 +20,7 @@ use Kazist\Service\Email\Email;
  *
  * @author sbc
  */
-class PaymentsModel extends PaymentsModel {
+class PaymentsModel extends BasePaymentsModel {
 
     public $code = '';
 
