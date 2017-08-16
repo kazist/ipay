@@ -1,0 +1,6 @@
+{
+    "IpayPayments": {
+        "namespace": "Ipay\\Payments",
+        "controller": "PaymentsController"
+    }
+}

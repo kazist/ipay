@@ -2,7 +2,7 @@
     "frontend": [{
             "title": "Ipay Payments Return",
             "description": "Ipay Payments Return.",
-            "controller": "Ipay\\Payments\\Code\\Controllers\\IpayController::returnAction",
+            "controller": "Ipay\\Payments\\Code\\Controllers\\PaymentsController::returnAction",
             "unique_name": "ipay.payments.return",
             "route": "ipay/payments/return",
             "permissions": "can_view, can_viewown",
@@ -15,7 +15,7 @@
         }, {
             "title": "Ipay Payments Cancelled",
             "description": "Ipay Payments Cancelled",
-            "controller": "Ipay\\Payments\\Code\\Controllers\\IpayController::cancelAction",
+            "controller": "Ipay\\Payments\\Code\\Controllers\\PaymentsController::cancelAction",
             "unique_name": "ipay.payments.cancel",
             "route": "ipay/payments/cancel",
             "permissions": "can_view, can_viewown",
@@ -29,7 +29,7 @@
         }, {
             "title": "Ipay Payments Notify",
             "description": "Ipay Payments Notify",
-            "controller": "Ipay\\Payments\\Code\\Controllers\\IpayController::notifyAction",
+            "controller": "Ipay\\Payments\\Code\\Controllers\\PaymentsController::notifyAction",
             "unique_name": "ipay.payments.notify",
             "route": "ipay/payments/notify",
             "permissions": "can_view, can_viewown",
@@ -60,7 +60,7 @@
         }, {
             "title": "Ipay Payments List",
             "description": "Management of Ipay Payments.",
-            "controller": "Ipay\\Payments\\Code\\Controllers\\Admin\\IpayController::indexAction",
+            "controller": "Ipay\\Payments\\Code\\Controllers\\Admin\\PaymentsController::indexAction",
             "permissions": "can_view, can_viewown",
             "unique_name": "admin.ipay.payments",
             "route": "admin/ipay/payments",
@@ -76,7 +76,7 @@
         }, {
             "title": "Ipay Payments Detail: {{ item.name }}",
             "description": "Ipay Payments Detail: {{ item.name }}",
-            "controller": "Ipay\\Payments\\Code\\Controllers\\Admin\\IpayController::detailAction",
+            "controller": "Ipay\\Payments\\Code\\Controllers\\Admin\\PaymentsController::detailAction",
             "unique_name": "admin.ipay.payments.detail",
             "route": "admin/ipay/payments/detail/{id}",
             "permissions": "can_view, can_viewown",
@@ -94,7 +94,7 @@
         }, {
             "title": "Ipay Payments Delete: {{ item.name }}",
             "description": "Ipay Payments Delete: {{ item.name }}",
-            "controller": "Ipay\\Payments\\Code\\Controllers\\Admin\\IpayController::deleteAction",
+            "controller": "Ipay\\Payments\\Code\\Controllers\\Admin\\PaymentsController::deleteAction",
             "unique_name": "admin.ipay.payments.delete",
             "route": "admin/ipay/payments/delete/{id}",
             "permissions": "can_delete, can_deleteown",

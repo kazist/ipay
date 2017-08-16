@@ -8,7 +8,7 @@
  */
 
 /**
- * Description of IpayController
+ * Description of PaymentsController
  *
  * @author sbc
  */
