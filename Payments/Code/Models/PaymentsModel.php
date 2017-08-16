@@ -152,7 +152,7 @@ class PaymentsModel extends BasePaymentsModel {
         $posted_data['p3'] = $this->request->query->get('p3');
         $posted_data['p4'] = $this->request->query->get('p4');
 
-        $factory->saveRecordByEntity('#__ipay_payments', $posted_data, array('fpi.txncd=:txncd'), array('txncd' => $posted_data['txncd']));
+        $factory->saveRecordByEntity('#__ipay_payments', $posted_data, array('ip.txncd=:txncd'), array('txncd' => $posted_data['txncd']));
 
         return $posted_data;
     }

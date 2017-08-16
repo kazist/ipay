@@ -737,7 +737,7 @@
     ],
     "primarykey": "id",
     "table_name": "ipay_payments",
-    "table_alias": "fpi",
+    "table_alias": "ip",
     "foreignkey": "",
     "renamedfields": "",
     "main_fields": [
@@ -754,53 +754,53 @@
     "query": {
         "from": {
             "table": "Ipay\\Payments\\Code\\Tables\\Ipay",
-            "alias": "fpi",
+            "alias": "ip",
             "name": "#__ipay_payments"
         },
         "select": [
-            "fpi.id",
-            "fpi.payment_id",
+            "ip.id",
+            "ip.payment_id",
             "fp.code AS payment_id_code",
-            "fpi.item_id",
-            "fpi.status",
-            "fpi.ivm",
-            "fpi.qwh",
-            "fpi.afd",
-            "fpi.poi",
-            "fpi.uyt",
-            "fpi.ifd",
-            "fpi.agd",
-            "fpi.mc",
-            "fpi.p1",
-            "fpi.p2",
-            "fpi.p3",
-            "fpi.p4",
-            "fpi.txncd",
-            "fpi.created_by",
+            "ip.item_id",
+            "ip.status",
+            "ip.ivm",
+            "ip.qwh",
+            "ip.afd",
+            "ip.poi",
+            "ip.uyt",
+            "ip.ifd",
+            "ip.agd",
+            "ip.mc",
+            "ip.p1",
+            "ip.p2",
+            "ip.p3",
+            "ip.p4",
+            "ip.txncd",
+            "ip.created_by",
             "uu.name AS created_by_name",
-            "fpi.date_created",
-            "fpi.modified_by",
+            "ip.date_created",
+            "ip.modified_by",
             "uu_4863.name AS modified_by_name",
-            "fpi.date_modified"
+            "ip.date_modified"
         ],
         "leftjoin": [
             {
                 "table": "Ipay\\Payments\\Code\\Tables\\Payments",
                 "alias": "fp",
                 "name": "#__ipay_payments",
-                "on": "fpi.payment_id = fp.id"
+                "on": "ip.payment_id = fp.id"
             },
             {
                 "table": "Users\\Users\\Code\\Tables\\Users",
                 "alias": "uu",
                 "name": "#__users_users",
-                "on": "fpi.created_by = uu.id"
+                "on": "ip.created_by = uu.id"
             },
             {
                 "table": "Users\\Users\\Code\\Tables\\Users",
                 "alias": "uu_4863",
                 "name": "#__users_users",
-                "on": "fpi.modified_by = uu_4863.id"
+                "on": "ip.modified_by = uu_4863.id"
             }
         ]
     }
