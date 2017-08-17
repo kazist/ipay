@@ -1,7 +1,7 @@
 
 [{
         "_table_name": "payments_gateways",
-        "tracking_id": "12",
+        "system_tracking_id": "12",
         "short_name": "ipay",
         "long_name": "Ipay",
         "input_label": "Ipay",
