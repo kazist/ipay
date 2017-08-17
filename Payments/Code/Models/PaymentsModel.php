@@ -46,7 +46,7 @@ class PaymentsModel extends BasePaymentsModel {
 
         $factory = new KazistFactory();
 
-        return $this->generateUrl('subscriptions.subscriptions');
+        return $this->generateUrl('affiliates.affiliates');
     }
 
     public function processIpay($payment_id) {
