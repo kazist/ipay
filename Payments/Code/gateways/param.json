@@ -1,0 +1,7 @@
+[{
+        "name": "phone",
+        "label": "Phone",
+        "default": "",
+        "tooltip": "<p>ONLY <strong>SAFARICOM/MPESA</strong> Phone Number Accepted.<br /> Dont Enter any Special Character <strong>\"+\"</strong> or <strong>\"0\"</strong>.<br /> Your Phone Number MUST be Registered with MPESA<br /> <br /> Enter Number in this Exact Format <span style=\"background-color: #ffcc00;\"><strong>254722123456</strong></span></p>",
+        "type": "text"
+    }]

@@ -1,0 +1,13 @@
+{
+    "title": "Ipay Payment",
+    "alias": "ipay",
+    "groups": [{
+            "title": "Ipay Information",
+            "settings": [{
+                    "name": "ipay_payments_vendor_ref",
+                    "label": "Vendor Ref",
+                    "default": "",
+                    "type": "text"
+                }]
+        }]
+}
