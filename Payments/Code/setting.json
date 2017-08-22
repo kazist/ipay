@@ -1,6 +1,0 @@
-[{
-        "name": "ipay_payments_vendor_ref",
-        "label": "Vendor Ref",
-        "default": "",
-        "type": "text"
-    }]
