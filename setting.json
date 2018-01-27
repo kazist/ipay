@@ -9,6 +9,24 @@
                     "default": "",
                     "tooltip": "Set Ipay Vendor Ref <b>(ie merchannt name)</b>",
                     "type": "text"
+                }, {
+                    "name": "ipay_payments_mobile_payment",
+                    "label": "Mobile Payment",
+                    "default": "1",
+                    "tooltip": "Allow Mobile Payment",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_debit_card",
+                    "label": "Debit Card",
+                    "default": "0",
+                    "tooltip": "Allow Debit Card",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_credit_card",
+                    "label": "Credit Card",
+                    "default": "0",
+                    "tooltip": "Allow Credit Card",
+                    "type": "yesno"
                 }]
         }]
 }

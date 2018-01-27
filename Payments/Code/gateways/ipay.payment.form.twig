@@ -5,10 +5,10 @@
 {% set web_base = constant('WEB_BASE') %}
 
 {% set tmparray = {'live': '1'} %}
-{% set tmparray = tmparray|merge({'mm': '1'}) %}
-{% set tmparray = tmparray|merge({'mb': '0'}) %}
-{% set tmparray = tmparray|merge({'dc': '0'}) %}
-{% set tmparray = tmparray|merge({'cc': '0'}) %}
+{% set tmparray = tmparray|merge({'mm': get_setting('ipay_payments_mobile_payment')|default('1')}) %}
+{% set tmparray = tmparray|merge({'mb': get_setting('ipay_payments_mobile_payment')|default('0')}) %}
+{% set tmparray = tmparray|merge({'dc': get_setting('ipay_payments_debit_card')|default('0')}) %}
+{% set tmparray = tmparray|merge({'cc': get_setting('ipay_payments_credit_card')|default('0')}) %}
 {% set tmparray = tmparray|merge({'mer': 'Social Biz Connect'}) %}
 {% set tmparray = tmparray|merge({'oid':  payment.id }) %}
 {% set tmparray = tmparray|merge({'inv':  payment.id }) %}
