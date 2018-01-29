@@ -18,7 +18,7 @@ namespace Ipay\Payments\Code\Controllers;
 defined('KAZIST') or exit('Not Kazist Framework');
 
 use Kazist\Controller\BaseController;
-use Ipay\Payments\Code\Models\IpayModel;
+use Ipay\Payments\Code\Models\PaymentsModel;
 use Payments\Payments\Code\Controllers\PaymentsController AS BasePaymentsController;
 
 class PaymentsController extends BasePaymentsController {
@@ -27,7 +27,7 @@ class PaymentsController extends BasePaymentsController {
 
         $payment_id = $this->request->query->get('id');
 
-        $this->model = new IpayModel();
+        $this->model = new PaymentsModel();
         $this->model->cancelTransaction($payment_id);
         $payment_url = $this->model->getUrlByPaymentId($payment_id);
 
@@ -38,7 +38,7 @@ class PaymentsController extends BasePaymentsController {
 
         $payment_id = $this->request->query->get('id');
 
-        $this->model = new IpayModel();
+        $this->model = new PaymentsModel();
         $this->model->completeTransaction($payment_id);
         $payment_url = $this->model->getUrlByPaymentId($payment_id);
 
@@ -49,7 +49,7 @@ class PaymentsController extends BasePaymentsController {
 
         $payment_id = $this->request->query->get('id');
 
-        $this->model = new IpayModel();
+        $this->model = new PaymentsModel();
         $this->model->processIpay($payment_id);
         $this->model->notificationTransaction($payment_id);
         $payment_url = $this->model->getUrlByPaymentId($payment_id);

@@ -66,8 +66,8 @@ class PaymentsModel extends BasePaymentsModel {
         $paid_amount = $this->getConverterAmount($paid_amount, $gateway, false);
         $required_amount = $this->getConverterAmount($required_amount, $gateway, false);
 
-        $vendor_title = $factory->get('ipay_payments_vendor_title');
-        $vendor_ref = $factory->get('ipay_payments_vendor_ref');
+        $vendor_title = $factory->getSetting('ipay_payments_vendor_title');
+        $vendor_ref = $factory->getSetting('ipay_payments_vendor_ref');
         //  $vendor_ref = $this->getGatewayParameter($gateway->id, 'vendor_ref');
 
         $ipnurl = "https://www.ipayafrica.com/ipn/?vendor=" . $vendor_ref .
