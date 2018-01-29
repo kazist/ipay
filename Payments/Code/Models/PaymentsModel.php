@@ -52,6 +52,7 @@ class PaymentsModel extends BasePaymentsModel {
     public function processIpay($payment_id) {
 
         $email = new Email();
+        $factory = new KazistFactory();
 
         $posted_data = $this->getIpayParams($payment_id);
         $payment_method = $posted_data['p1'];
@@ -65,7 +66,9 @@ class PaymentsModel extends BasePaymentsModel {
         $paid_amount = $this->getConverterAmount($paid_amount, $gateway, false);
         $required_amount = $this->getConverterAmount($required_amount, $gateway, false);
 
-        $vendor_ref = $this->getGatewayParameter($gateway->id, 'vendor_ref');
+        $vendor_title = $factory->get('ipay_payments_vendor_title');
+        $vendor_ref = $factory->get('ipay_payments_vendor_ref');
+        //  $vendor_ref = $this->getGatewayParameter($gateway->id, 'vendor_ref');
 
         $ipnurl = "https://www.ipayafrica.com/ipn/?vendor=" . $vendor_ref .
                 "&id=" . $posted_data['item_id'] .
@@ -89,7 +92,7 @@ class PaymentsModel extends BasePaymentsModel {
             curl_setopt_array($curl, array(
                 CURLOPT_RETURNTRANSFER => 1,
                 CURLOPT_URL => $ipnurl,
-                CURLOPT_USERAGENT => 'SBC call'
+                CURLOPT_USERAGENT => $vendor_title . ' call'
             ));
             // Send the request & save response to $resp
             $status = curl_exec($curl);

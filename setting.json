@@ -4,10 +4,28 @@
     "groups": [{
             "title": "Ipay Information",
             "settings": [{
+                    "name": "ipay_payments_vendor_title",
+                    "label": "Vendor Title",
+                    "default": "",
+                    "tooltip": "Set Ipay Vendor Title",
+                    "type": "text"
+                }, {
                     "name": "ipay_payments_vendor_ref",
                     "label": "Vendor Ref",
                     "default": "",
                     "tooltip": "Set Ipay Vendor Ref <b>(ie merchannt name)</b>",
+                    "type": "text"
+                }, {
+                    "name": "ipay_payments_vendor_currency",
+                    "label": "Vendor Currency",
+                    "default": "kes",
+                    "tooltip": "Set Ipay Vendor Currency",
+                    "type": "text"
+                }, {
+                    "name": "ipay_payments_vendor_hashcode",
+                    "label": "Vendor Hashcode",
+                    "default": "",
+                    "tooltip": "Set Ipay Vendor Hashcode",
                     "type": "text"
                 }, {
                     "name": "ipay_payments_mobile_payment",
