@@ -10,10 +10,22 @@
                     "tooltip": "Set Ipay Vendor Title",
                     "type": "text"
                 }, {
+                    "name": "ipay_payments_live",
+                    "label": "Allow Live",
+                    "default": "1",
+                    "tooltip": "Allow Live",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_autopay",
+                    "label": "Allow Autopay",
+                    "default": "1",
+                    "tooltip": "Allow Autopay",
+                    "type": "yesno"
+                }, {
                     "name": "ipay_payments_vendor_ref",
                     "label": "Vendor Ref",
                     "default": "",
-                    "tooltip": "Set Ipay Vendor Ref <b>(ie merchannt name)</b>",
+                    "tooltip": "Set Ipay Vendor Ref <b>(ie merchant name)</b>",
                     "type": "text"
                 }, {
                     "name": "ipay_payments_vendor_currency",
@@ -28,22 +40,52 @@
                     "tooltip": "Set Ipay Vendor Hashcode",
                     "type": "text"
                 }, {
-                    "name": "ipay_payments_mobile_payment",
-                    "label": "Mobile Payment",
+                    "name": "ipay_payments_mpesa",
+                    "label": "Allow Mpesa",
                     "default": "1",
-                    "tooltip": "Allow Mobile Payment",
+                    "tooltip": "Allow Mpesa",
                     "type": "yesno"
                 }, {
-                    "name": "ipay_payments_debit_card",
-                    "label": "Debit Card",
-                    "default": "0",
+                    "name": "ipay_payments_airtel",
+                    "label": "Allow Ailtel",
+                    "default": "1",
+                    "tooltip": "Allow Ailtel",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_equity",
+                    "label": "Allow Equity",
+                    "default": "1",
+                    "tooltip": "Allow Equity",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_mobilebanking",
+                    "label": "Allow Mobile Banking",
+                    "default": "1",
+                    "tooltip": "Allow Mobile Banking",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_debitcard",
+                    "label": "Allow Debit Card",
+                    "default": "1",
                     "tooltip": "Allow Debit Card",
                     "type": "yesno"
                 }, {
-                    "name": "ipay_payments_credit_card",
-                    "label": "Credit Card",
-                    "default": "0",
+                    "name": "ipay_payments_creditcard",
+                    "label": "Allow Credit Card",
+                    "default": "1",
                     "tooltip": "Allow Credit Card",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_mkoporahisi",
+                    "label": "Allow Mkopo Rahisi",
+                    "default": "1",
+                    "tooltip": "Allow Mkopo Rahisi",
+                    "type": "yesno"
+                }, {
+                    "name": "ipay_payments_saida",
+                    "label": "Allow Saida",
+                    "default": "1",
+                    "tooltip": "Allow Saida",
                     "type": "yesno"
                 }]
         }]

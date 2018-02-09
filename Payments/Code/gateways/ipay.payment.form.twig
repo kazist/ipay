@@ -4,37 +4,43 @@
 
 {% set web_base = constant('WEB_BASE') %}
 
-{% set tmparray = {'live': '1'} %}
-{% set tmparray = tmparray|merge({'mm': get_setting('ipay_payments_mobile_payment')|default('1')}) %}
-{% set tmparray = tmparray|merge({'mb': get_setting('ipay_payments_mobile_payment')|default('0')}) %}
-{% set tmparray = tmparray|merge({'dc': get_setting('ipay_payments_debit_card')|default('0')}) %}
-{% set tmparray = tmparray|merge({'cc': get_setting('ipay_payments_credit_card')|default('0')}) %}
-{% set tmparray = tmparray|merge({'mer': get_setting('ipay_payments_vendor_title')}) %}
-{% set tmparray = tmparray|merge({'oid':  payment.id }) %}
-{% set tmparray = tmparray|merge({'inv':  payment.id }) %}
-{% set tmparray = tmparray|merge({'ttl': gateway.total_amount|round(0, 'ceil') }) %}
-{% set tmparray = tmparray|merge({'tel': user.phone|default('020232323')|replace({' ': "", '-': ""}) }) %}
-{% set tmparray = tmparray|merge({'eml': user.email }) %}
-{% set tmparray = tmparray|merge({'vid': get_setting('ipay_payments_vendor_ref')}) %}
-{% set tmparray = tmparray|merge({'cur': get_setting('ipay_payments_vendor_currency')}) %}
-{% set tmparray = tmparray|merge({'p1': 'mpesa'}) %}
-{% set tmparray = tmparray|merge({'p2': ''}) %}
-{% set tmparray = tmparray|merge({'p3': ''}) %}
-{% set tmparray = tmparray|merge({'p4': ''}) %}
-{% set tmparray = tmparray|merge({'cbk':  web_base ~'/ipay/payments/notify' }) %}
-{% set tmparray = tmparray|merge({'cst': '1'}) %}
-{% set tmparray = tmparray|merge({'crl': '0'}) %}
+{% set arr = {'live': get_setting('ipay_payments_live')|default('1')} %}
+{% set arr = arr|merge({'mpesa': get_setting('ipay_payments_mpesa')|default('1')}) %}
+{% set arr = arr|merge({'airtel': get_setting('ipay_payments_airtel')|default('1')}) %}
+{% set arr = arr|merge({'equity': get_setting('ipay_payments_equity')|default('1')}) %}
+{% set arr = arr|merge({'mobilebanking': get_setting('ipay_payments_mobilebanking')|default('1')}) %}
+{% set arr = arr|merge({'debitcard': get_setting('ipay_payments_debitcard')|default('1')}) %}
+{% set arr = arr|merge({'creditcard': get_setting('ipay_payments_creditcard')|default('1')}) %}
+{% set arr = arr|merge({'mkoporahisi': get_setting('ipay_payments_mkoporahisi')|default('1')}) %}
+{% set arr = arr|merge({'saida': get_setting('ipay_payments_saida')|default('1')}) %}
+{% set arr = arr|merge({'autopay': get_setting('ipay_payments_autopay')|default('1')}) %}
+{% set arr = arr|merge({'oid':  payment.id }) %}
+{% set arr = arr|merge({'inv':  payment.id }) %}
+{% set arr = arr|merge({'ttl': gateway.total_amount|round(0, 'ceil') }) %}
+{% set arr = arr|merge({'tel': user.phone|default('020232323')|replace({' ': "", '-': ""}) }) %}
+{% set arr = arr|merge({'eml': user.email }) %}
+{% set arr = arr|merge({'vid': get_setting('ipay_payments_vendor_ref')}) %}
+{% set arr = arr|merge({'curr': get_setting('ipay_payments_vendor_currency')}) %}
+{% set arr = arr|merge({'p1': 'mpesa'}) %}
+{% set arr = arr|merge({'p2': ''}) %}
+{% set arr = arr|merge({'p3': ''}) %}
+{% set arr = arr|merge({'p4': ''}) %}
+{% set arr = arr|merge({'cbk':  web_base ~'/ipay/payments/notify' }) %}
+{% set arr = arr|merge({'lbk':  web_base ~'/ipay/payments/return' }) %}
+{% set arr = arr|merge({'cst': '1'}) %}
+{% set arr = arr|merge({'crl': '0'}) %}
 
 
-{% set datastring = tmparray|join() %}
+{% set datastring = arr.live ~ arr.oid ~ arr.inv ~ arr.ttl ~ arr.tel ~ arr.eml ~ arr.vid ~ arr.curr ~ arr.p1 ~ arr.p2 ~ arr.p3 ~ arr.p4 ~ arr.cbk ~ arr.cst ~ arr.crl  %}
 {% set hashkey = get_setting('ipay_payments_vendor_hashcode') %}
 {% set hashid = hash_hmac('sha1', datastring, hashkey) %}
 
-{% set tmparray = tmparray|merge({'hsh': hashid}) %}
-{% set tmparray = tmparray|merge({'cbk': tmparray.cbk|url_encode }) %}
+{% set arr = arr|merge({'hsh': hashid}) %}
+{% set arr = arr|merge({'cbk': arr.cbk|url_encode }) %}
+{% set arr = arr|merge({'lbk': arr.lbk|url_encode }) %}
 
 {% set url = '' %}
-{% for key,param in tmparray %}
+{% for key,param in arr %}
     {% if key %}
         {% set url =url ~ '&' ~ key ~ '=' ~ param %}
     {% else %}
@@ -49,7 +55,7 @@
 
 #}
 
-<input class="payment_url" type="hidden" name="payment_url" value="https://www.ipayafrica.com/payments?{{ url }}" title='Pay with Mpesa'>
+<input class="payment_url" type="hidden" name="payment_url" value="https://payments.ipayafrica.com/v3/ke?{{ url }}" title='Pay with Mpesa'>
 
 <center>
     <a class="process-payment" href="#" title="Complete Payment">

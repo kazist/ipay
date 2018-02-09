@@ -58,13 +58,13 @@ class PaymentsModel extends BasePaymentsModel {
         $payment_method = $posted_data['p1'];
 
         $payment = $this->getPaymentById($payment_id);
-        $gateway = $this->getGatewayByShortName($payment_method);
+        $gateway = $this->getGatewayByShortName('ipay');
         $deductions = json_decode($payment->deductions);
         $required_amount = (isset($deductions->amount) && $deductions->amount) ? $deductions->amount : $payment->amount;
         $paid_amount = (isset($posted_data['mc']) && $posted_data['mc']) ? $posted_data['mc'] : 0;
 
         $paid_amount = $this->getConverterAmount($paid_amount, $gateway, false);
-        $required_amount = $this->getConverterAmount($required_amount, $gateway, false);
+       // $required_amount = $this->getConverterAmount($required_amount, $gateway, false);
 
         $vendor_title = $factory->getSetting('ipay_payments_vendor_title');
         $vendor_ref = $factory->getSetting('ipay_payments_vendor_ref');
@@ -105,28 +105,31 @@ class PaymentsModel extends BasePaymentsModel {
         $payment->code = $posted_data['txncd'];
         $payment->receipt_no = $payment->receipt_no;
 
-        switch ($status) {
+        if (!$payment->successful) {
+          
+            switch ($status) {
 
-            case 'aei7p7yrx4ae34':
-            case 'eq3i7p5yt7645e':
-            case 'dtfi4p7yty45wq':
+                case 'aei7p7yrx4ae34':
+                case 'eq3i7p5yt7645e':
+                case 'dtfi4p7yty45wq':
 
-                parent::savePaidAmount($payment, $required_amount, $paid_amount);
+                    parent::savePaidAmount($payment, $required_amount, $paid_amount);
 
-                if ($paid_amount >= $required_amount) {
-                    parent::successfulTransaction($payment_id, $this->code);
-                } else {
+                    if ($paid_amount >= $required_amount) {
+                        parent::successfulTransaction($payment_id, $this->code);
+                    } else {
+                        parent::failTransaction($payment_id);
+                    }
+
+                    break;
+                case 'fe2707etr5s4wq':
+                case 'cr5i3pgy9867e1':
                     parent::failTransaction($payment_id);
-                }
-
-                break;
-            case 'fe2707etr5s4wq':
-            case 'cr5i3pgy9867e1':
-                parent::failTransaction($payment_id);
-                break;
-            case 'bdi6p2yy76etrs':
-                parent::pendingTransaction($payment_id);
-                break;
+                    break;
+                case 'bdi6p2yy76etrs':
+                    parent::pendingTransaction($payment_id);
+                    break;
+            }
         }
     }
 
@@ -147,6 +150,7 @@ class PaymentsModel extends BasePaymentsModel {
         $posted_data['uyt'] = $this->request->query->get('uyt');
         $posted_data['ifd'] = $this->request->query->get('ifd');
         $posted_data['agd'] = $this->request->query->get('agd');
+        $posted_data['channel'] = $this->request->query->get('channel');
 
         //Setting the customer's information from the IPN post variables
         $posted_data['mc'] = $this->request->query->get('mc');

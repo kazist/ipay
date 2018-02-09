@@ -16,7 +16,7 @@
         "file_type": "csv",
         "file_limit": "2000",
         "form_path": "Ipay/Payments/Code/gateways",
-        "url": "https://www.ipayafrica.com/incoming/",
+        "url": "https://payments.ipayafrica.com/v3/ke",
         "published": "1"
     }]
 
